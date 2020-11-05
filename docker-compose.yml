@@ -13,6 +13,8 @@ services:
     - PGPORT=5432
     - PGUSER=odoo
     - PGPASSWORD=myodoo
+    volumes:
+    - .:/odoo
   mydb:
     image: postgres:10
     environment:
