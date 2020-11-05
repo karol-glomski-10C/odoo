@@ -1,0 +1,21 @@
+version: '2'
+services:
+  web:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    depends_on:
+      - mydb
+    ports:
+      - "8069:8069"
+    environment:
+    - PGHOST=mydb
+    - PGPORT=5432
+    - PGUSER=odoo
+    - PGPASSWORD=myodoo
+  mydb:
+    image: postgres:10
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=odoo
+      - POSTGRES_PASSWORD=myodoo
